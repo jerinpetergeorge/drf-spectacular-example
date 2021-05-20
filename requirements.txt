@@ -1,0 +1,4 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+drf-spectacular

@@ -1,0 +1,13 @@
+[tool.black]
+line_length = 88
+force_exclude = """
+        (migrations|.github/*)
+    """
+
+[tool.isort]
+profile = "black"
+quiet = "True"
+skip_glob = "*migrations*,.github/*"
+skip_gitignore = "True"
+combine_as_imports = "True"
+line_length = 88

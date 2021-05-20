@@ -1,0 +1,14 @@
+[flake8]
+count = True
+statistics = True
+max-line-length = 88
+ignore = W605,E126
+extend-ignore = E203, W503
+
+per-file-ignores =
+    */settings*:F403,F405
+
+exclude =
+    .tox
+    .git
+    */migrations/*
