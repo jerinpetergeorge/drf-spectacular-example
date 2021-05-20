@@ -1,6 +1,8 @@
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.urls import reverse_lazy
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -114,10 +116,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # DRF
-def load_extension():
-    from spectacular.auth_extension import SimpleJWTTokenUserScheme  # noqa F401
-
-
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
@@ -132,9 +130,11 @@ REST_FRAMEWORK = {
 }
 
 # DRF Spectacular Settings
-load_extension()  #
 SPECTACULAR_SETTINGS = {
     "TITLE": "Test APIs",
     "DESCRIPTION": "Various APIs for Test service",
     "VERSION": "1.0.0",
+    "PREPROCESSING_HOOKS": ["spectacular.hooks.remove_apis_from_list"],
+    # Custom Spectacular Settings
+    "EXCLUDE_PATH": [reverse_lazy("schema")],
 }
